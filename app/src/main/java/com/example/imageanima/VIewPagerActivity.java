@@ -135,8 +135,6 @@ public class VIewPagerActivity extends AppCompatActivity {
 
         @Override
         public boolean isViewFromObject(View view, Object object) {
-
-
             return view == object;
         }
     }
