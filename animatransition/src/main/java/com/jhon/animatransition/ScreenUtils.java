@@ -4,7 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 
 /**
- * Created by jhon on 2016/3/27.
+ * Created by jzg on 2016/3/27.
+ * 屏幕相关
  */
 public class ScreenUtils {
     static  public int getScreenWidth(Activity context){

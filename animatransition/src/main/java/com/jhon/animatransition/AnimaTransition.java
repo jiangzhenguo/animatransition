@@ -62,13 +62,13 @@ public class AnimaTransition {
         return  this;
     }
 
-    public void start(Bundle savedInstanceState){
+    public ViewData start(Bundle savedInstanceState){
         if (interpolator == null) {
             interpolator = new DecelerateInterpolator();
         }
         final Context context = toView.getContext();
         final Bundle bundle = fromIntent.getExtras();
-        AnimaEntity.startAnimation(context,toView,bundle,savedInstanceState,duration,interpolator,mWidth,mHeight,mListener);
+        return  AnimaEntity.startAnimation(context,toView,bundle,savedInstanceState,duration,interpolator,mWidth,mHeight,mListener);
     }
 
 

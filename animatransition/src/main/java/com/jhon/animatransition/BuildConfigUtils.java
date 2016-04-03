@@ -6,6 +6,7 @@ import java.lang.reflect.Field;
 
 /**
  * Created by jzg on 2016/1/11.
+ *
  */
 public class BuildConfigUtils {
     public static Object getBuildConfigValue(Context context, String fieldName) {

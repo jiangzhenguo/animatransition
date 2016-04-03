@@ -1,12 +1,16 @@
 package com.jhon.animatransition;
 
 import android.animation.Animator;
+import android.animation.AnimatorSet;
 import android.animation.TimeInterpolator;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewTreeObserver;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 
 /**
@@ -59,13 +63,13 @@ public class AnimaEntity {
                         if(dScalewidth == 1) {
                             viewData.widthScale = (float) transitionData.thumbnailWidth / toView.getWidth();
                             viewData.heightScale =  (float)transitionData.thumbnailHeight / dheight;
-                            viewData.x = transitionData.thumbnailLeft - 0;
+                            viewData.x = transitionData.thumbnailLeft - position[0];
                             viewData.y = (int)(transitionData.thumbnailTop - position[1] - transitionData.thumbnailHeight * (dScaleHeith)/2);
                         } else {
                             viewData.heightScale = (float) transitionData.thumbnailHeight / toView.getHeight();
                             viewData.widthScale = (float) transitionData.thumbnailWidth / dwidth;
                             viewData.x = (int)(transitionData.thumbnailLeft - position[0] - transitionData.thumbnailWidth * (dScalewidth)/2);
-                            viewData.y = transitionData.thumbnailTop - 0;
+                            viewData.y = transitionData.thumbnailTop - position[1];
                         }
 
                         runAnimation(viewData, interpolator, listener);
@@ -97,5 +101,13 @@ public class AnimaEntity {
                     translationX(0).translationY(0).
                     setInterpolator(interpolator).setListener(listener);
         }
+    }
+
+    public static void startfinishAnimation(final Context context,ViewData viewData,Animator.AnimatorListener listener){
+          View view = viewData.toView;
+          if(view != null){
+              view.animate().setDuration(viewData.duration).scaleX(viewData.widthScale).scaleY(viewData.heightScale)
+                      .translationX(viewData.x).translationY(viewData.y).setListener(listener).start();
+          }
     }
 }
